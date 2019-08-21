@@ -170,13 +170,13 @@
                                             type="success" size="mini">{{scope.row.resolution}}
                                     </el-tag>
                                 </template>
-                                <a v-if="status.clicks.indexOf(scope.row.magnet)!=-1"
-                                   class="visited-a"
+                                <a v-if="scope.row.magnet"
+                                   :class="status.clicks.indexOf(scope.row.magnet)!=-1?'visited-a':''"
                                    :href="scope.row.magnet"
-                                   v-html="scope.row.nameHtml"></a>
-                                <a v-else :href="scope.row.magnet"
                                    @click="handleClickMagnet(scope.row.magnet)"
                                    v-html="scope.row.nameHtml"></a>
+                                <span v-else
+                                   v-html="scope.row.nameHtml"></span>
                             </template>
                         </el-table-column>
                         <el-table-column

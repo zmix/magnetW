@@ -328,6 +328,9 @@ public class MagnetService {
      * @return
      */
     private String transformMagnet(String url) {
+        if (StringUtils.isEmpty(url)) {
+            return url;
+        }
         String regex = "magnet:?[^\\\"]+";
         boolean matches = Pattern.matches(regex, url);
         if (matches) {

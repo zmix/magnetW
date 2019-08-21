@@ -107,11 +107,14 @@
                             </van-tag>
                         </template>
 
-                        <a v-if="status.clicks.indexOf(it.magnet)!=-1" class="visited-a"
+
+                        <a v-if="it.magnet"
+                           :class="status.clicks.indexOf(it.magnet)!=-1?'visited-a':''"
                            :href="it.magnet"
+                           @click="handleClickMagnet(it.magnet)"
                            v-html="it.nameHtml"></a>
-                        <a v-else :href="it.magnet" @click="handleClickMagnet(it.magnet)"
-                           v-html="it.nameHtml"></a>
+                        <span v-else
+                              v-html="it.nameHtml"></span>
                     </div>
 
                     <van-row>

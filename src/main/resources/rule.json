@@ -27,7 +27,7 @@
     "size": "./div[@class='item-bar']/span[4]/b",
     "date": "./div[@class='item-bar']/span[1]/b",
     "hot": "./div[@class='item-bar']/span[2]/b",
-    "url": "http://www.btakt.com",
+    "url": "http://www.btdet.com",
     "paths": {
       "time": "/search/%s-first-asc-%d",
       "size": "/search/%s-size-desc-%d",

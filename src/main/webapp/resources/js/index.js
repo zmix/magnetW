@@ -117,7 +117,9 @@ new Vue({
             this.requestMagnetList(true)
         },
         handleClickMagnet(url) {
-            this.status.clicks.push(url)
+            if (this.status.clicks.indexOf(url) === -1) {
+                this.status.clicks.push(url)
+            }
         },
         /**
          * 请求列表
