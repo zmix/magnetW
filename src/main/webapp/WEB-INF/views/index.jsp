@@ -29,7 +29,7 @@
 <div v-cloak id="app">
     <el-container>
         <!--头-->
-        <el-header class="header-row" style="height: 30px">
+        <el-header class="header-row">
             <el-row>
                 <!--左边-->
                 <el-col :span="12">

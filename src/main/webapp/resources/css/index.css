@@ -22,7 +22,14 @@ a {
 }
 
 .header-row {
-    height: 30px;
+    max-height: 30px;
+}
+
+.header-row .el-row{
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .header-row a {
