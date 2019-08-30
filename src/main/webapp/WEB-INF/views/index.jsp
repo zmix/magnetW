@@ -81,13 +81,13 @@
                                        @click="handleBatchCopy">批量复制</el-button>
                         </span>
                         <a class="el-button el-button--default el-button--mini"
-                           :href="current.siteUrl" target="_blank">去源站看看</a>
+                           :href="current.siteUrl" target="_blank">去源站</a>
                         <el-button size="mini" v-if="config.reportEnabled"
                                    @click="showReportDialog">自助举报
                         </el-button>
                     </el-col>
                     <!--右边-->
-                    <el-col :span="config.reportEnabled?12:24" class="option-right">
+                    <el-col :span="12" class="option-right">
                         <el-checkbox class="remember-source" v-model="setting.memoryChoice"
                                      label="记住上次选择的源站"
                                      @change="onChangeMemoryChoice"/>
@@ -161,7 +161,7 @@
                     </div>
                     <el-table
                             @selection-change="handleSelectionChange"
-                            @row-click="handleClickItem"
+                            @cell-click="handleClickItem"
                             ref="tableWrapper"
                             size="mini"
                             :data="list"
@@ -401,8 +401,10 @@
 
 
         //点击item的回调
-        vue.handleClickItem = function (row, column, event) {
-            vue.$refs.tableWrapper.toggleRowSelection(row);
+        vue.handleClickItem = function (row, column, cell, event) {
+            if (column.label !== '名称' && column.label !== '操作') {
+                vue.$refs.tableWrapper.toggleRowSelection(row);
+            }
         };
 
     }
