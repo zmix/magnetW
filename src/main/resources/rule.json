@@ -46,7 +46,9 @@
     "hot": "./ul[1]/li/h3/span/span[3]",
     "url": "https://www.ciliwang.club",
     "paths": {
-      "time": "/list.html?keyword=%s&page=%d"
+      "preset": "/list.html?keyword=%s&page=%d&sort=ai",
+      "time": "/list.html?keyword=%s&page=%d&sort=time",
+      "hot": "/list.html?keyword=%s&page=%d&sort=hot"
     },
     "detail": {
       "files": "//div[@class=\"file_list\"]/ol/li"
