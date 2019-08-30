@@ -68,9 +68,23 @@
                 <!--选项-->
                 <el-row class="option-row">
                     <!--左边-->
-                    <el-col :span="12">
-                        <a v-if="config.reportEnabled" @click="showReportDialog"
-                           class="report-link">自助举报</a>
+                    <el-col :span="12" class="option-left">
+                        <span v-show="multipleSelection.length>0">
+                             <el-popover
+                                     placement="bottom"
+                                     trigger="hover">
+                            <span slot="reference" class="multiple-selection-message">当前选中：{{multipleSelection.length}}个</span>
+                                 <div class="multiple-selection-item-name"
+                                      v-for="ms in multipleSelection">{{ms.name}}</div>
+                            </el-popover>
+                            <el-button class="multiple-selection-button" size="mini"
+                                       @click="handleBatchCopy">批量复制</el-button>
+                        </span>
+                        <a class="el-button el-button--default el-button--mini"
+                           :href="current.siteUrl" target="_blank">去源站看看</a>
+                        <el-button size="mini" v-if="config.reportEnabled"
+                                   @click="showReportDialog">自助举报
+                        </el-button>
                     </el-col>
                     <!--右边-->
                     <el-col :span="config.reportEnabled?12:24" class="option-right">
@@ -146,12 +160,18 @@
                         </el-row>
                     </div>
                     <el-table
+                            @selection-change="handleSelectionChange"
+                            @row-click="handleClickItem"
                             ref="tableWrapper"
                             size="mini"
                             :data="list"
                             border
                             style="width: 100%">
                         <div slot="empty" class="empty-message">{{message}}</div>
+                        <el-table-column
+                                type="selection"
+                                width="35">
+                        </el-table-column>
                         <el-table-column
                                 width="50"
                                 type="index">
@@ -177,7 +197,7 @@
                                    @click="handleClickMagnet(scope.row.magnet)"
                                    v-html="scope.row.nameHtml"></a>
                                 <span v-else
-                                   v-html="scope.row.nameHtml"></span>
+                                      v-html="scope.row.nameHtml"></span>
                             </template>
                         </el-table-column>
                         <el-table-column
@@ -204,7 +224,7 @@
                                 width="140">
                             <template slot-scope="scope">
                                 <el-popover
-                                        placement="left-start"
+                                        placement="left"
                                         trigger="hover">
                                     <h3 class="more-action-title">更多操作</h3>
                                     <div class="more-action-button">
@@ -336,6 +356,12 @@
             this.requestMagnetList(true)
         };
 
+
+        //点击item的回调
+        vue.handleSelectionChange = function (val) {
+            vue._data.multipleSelection = val;
+        };
+
         /************重写的回调************/
 
 
@@ -371,6 +397,12 @@
                     });
                 }
             }
+        };
+
+
+        //点击item的回调
+        vue.handleClickItem = function (row, column, event) {
+            vue.$refs.tableWrapper.toggleRowSelection(row);
         };
 
     }

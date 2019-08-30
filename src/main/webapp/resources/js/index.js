@@ -13,6 +13,9 @@ new Vue({
         sortBy: null,
         rule: null,
         successMessage: null,
+        //选中的item
+        multipleSelection: [],
+
         //举报
         filter: {
             message: "如果你发现有违规的搜索结果，可以在此处提交，提交后将会禁止搜索此关键词，也可以在更多按钮中举报资源",
@@ -174,6 +177,17 @@ new Vue({
                 that.detail.errorMessage = '加载失败';
             });
         },
+        /**
+         * 批量复制
+         */
+        handleBatchCopy() {
+            let batchUrl = "";
+            for (let i = 0; i < this.multipleSelection.length; i++) {
+                batchUrl = batchUrl + this.multipleSelection[i].magnet + "\n"
+            }
+            this.$copyText(batchUrl)
+            this.handleCopy()
+        },
         handleCopy() {
             this.onToastMessage('复制成功', 'success');
         },
@@ -291,6 +305,12 @@ new Vue({
          * @param message
          */
         onToastMessage(message, type) {
+
+        },
+        /**
+         * 点击item的回调
+         */
+        handleClickItem(e) {
 
         }
 
