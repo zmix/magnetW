@@ -19,22 +19,20 @@
     }
   },
   {
-    "site": "BT蚂蚁",
+    "site": "磁力果",
     "proxy": false,
-    "group": "//div[@id='wall']/div[@class='search-item']",
-    "magnet": "./div[@class='item-title']/a/@href",
-    "name": "./div[@class='item-title']/a",
-    "size": "./div[@class='item-bar']/span[4]/b",
-    "date": "./div[@class='item-bar']/span[1]/b",
-    "hot": "./div[@class='item-bar']/span[2]/b",
-    "url": "http://www.btdet.com",
+    "group": "//div[@class=\"card mb-4\"]",
+    "magnet": "./div[1]/div[2]/div/button[1]/@data-src",
+    "name": "./div[1]/div[1]/a",
+    "size": "./div[2]/div/div[1]/small[2]/span",
+    "date": "./div[2]/div/div[1]/small[1]/span",
+    "hot": "./div[2]/div/div[1]/small[3]/span",
+    "url": "https://ciliguo.cc",
     "paths": {
-      "time": "/search/%s-first-asc-%d",
-      "size": "/search/%s-size-desc-%d",
-      "hot": "/search/%s-hot-desc-%d"
+      "preset": "/search?q=%s&p=%d"
     },
     "detail": {
-      "files": "//*[@id=\"wall\"]/ol/li"
+      "files": "//div[@class=\"card mt-4 mb-4 card-info\"]/div[2]/div[1]/div/div[1]/span"
     }
   },
   {
@@ -52,6 +50,25 @@
     },
     "detail": {
       "files": "//div[@class=\"file_list\"]/ol/li"
+    }
+  },
+  {
+    "site": "BT蚂蚁",
+    "proxy": false,
+    "group": "//div[@id='wall']/div[@class='search-item']",
+    "magnet": "./div[@class='item-title']/a/@href",
+    "name": "./div[@class='item-title']/a",
+    "size": "./div[@class='item-bar']/span[4]/b",
+    "date": "./div[@class='item-bar']/span[1]/b",
+    "hot": "./div[@class='item-bar']/span[2]/b",
+    "url": "http://www.btdet.com",
+    "paths": {
+      "time": "/search/%s-first-asc-%d",
+      "size": "/search/%s-size-desc-%d",
+      "hot": "/search/%s-hot-desc-%d"
+    },
+    "detail": {
+      "files": "//*[@id=\"wall\"]/ol/li"
     }
   },
   {
