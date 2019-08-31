@@ -76,8 +76,10 @@ new Vue({
                 if (source == null || source.length <= 0) {
                     for (let i = 0; i < this.sourceSites.length; i++) {
                         //列表也包含上次选的源站 就自动选择上次的源站
-                        if (this.setting.source === this.sourceSites[i].site) {
-                            this.current.site = this.setting.source;
+                        let sourceSite = this.sourceSites[i];
+                        if (this.setting.source === sourceSite.site) {
+                            this.current.site = sourceSite.site;
+                            this.current.siteUrl = sourceSite.url;
                             break
                         }
                     }
@@ -213,6 +215,7 @@ new Vue({
                     const data = response.body.data;
                     this.trackersString = data.trackersString;
                     this.rule = data.rule;
+                    this.current = data.current;
                     console.log("callback - onRequestSuccess");
                     this.onRequestSuccess(response.body)
                 } else {
